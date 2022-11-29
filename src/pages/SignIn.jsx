@@ -39,6 +39,7 @@ const SignIn = () => {
             <input
               type='email'
               placeholder='Email address'
+              autoComplete='off'
               id='email'
               name='email'
               value={email}
@@ -49,6 +50,7 @@ const SignIn = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Password'
+                autoComplete='off'
                 id='password'
                 name='password'
                 value={password}

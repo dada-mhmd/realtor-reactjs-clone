@@ -76,6 +76,7 @@ const SignUp = () => {
             <input
               type='text'
               placeholder='Full name'
+              autoComplete='on'
               id='name'
               name='name'
               value={name}
@@ -86,6 +87,7 @@ const SignUp = () => {
             <input
               type='email'
               placeholder='Email address'
+              autoComplete='off'
               id='email'
               name='email'
               value={email}
@@ -96,6 +98,7 @@ const SignUp = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder='Password'
+                autoComplete='off'
                 id='password'
                 name='password'
                 value={password}
