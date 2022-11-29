@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import OAuth from '../components/OAuth'
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { toast } from 'react-toastify'
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -9,6 +11,8 @@ const SignIn = () => {
     email: '',
     password: '',
   })
+
+  const navigate = useNavigate()
 
   const { email, password } = formData
 
@@ -19,6 +23,23 @@ const SignIn = () => {
         [e.target.id]: e.target.value,
       }
     })
+  }
+
+  const onSubmit = async e => {
+    e.preventDefault()
+    try {
+      const auth = getAuth()
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      if (userCredentials.user) {
+        navigate('/')
+      }
+    } catch (error) {
+      toast.error('Invalid user credentials')
+    }
   }
 
   return (
@@ -35,7 +56,7 @@ const SignIn = () => {
         </div>
 
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <form className=''>
+          <form onSubmit={onSubmit}>
             <input
               type='email'
               placeholder='Email address'

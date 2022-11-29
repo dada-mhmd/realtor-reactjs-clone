@@ -23,10 +23,11 @@ const ForgotPassword = () => {
         </div>
 
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <form className=''>
+          <form>
             <input
               type='email'
               placeholder='Email address'
+              autoComplete='on'
               id='email'
               name='email'
               value={email}
