@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import Header from './components/Header'
+import PrivateRoutes from './components/PrivateRoutes'
 import ForgotPassowrd from './pages/ForgotPassowrd'
 import Home from './pages/Home'
 import Offers from './pages/Offers'
@@ -17,7 +18,9 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile' element={<PrivateRoutes />}>
+            <Route path='/profile' element={<Profile />} />
+          </Route>
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/forgot-password' element={<ForgotPassowrd />} />
